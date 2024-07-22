@@ -21,7 +21,7 @@ class ControllerExample extends StatelessWidget {
                 final list = _controller.selectAll();
               },
               child: const Text('Select All'),
-              style: ElevatedButton.styleFrom(primary: Colors.green),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
             ),
             const SizedBox(width: 10),
             ElevatedButton(
@@ -30,7 +30,7 @@ class ControllerExample extends StatelessWidget {
                 final list = _controller.getSelectedItems();
               },
               child: const Text('Get Selected All'),
-              style: ElevatedButton.styleFrom(primary: Colors.blue),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
             ),
             const SizedBox(width: 10),
             ElevatedButton(
@@ -38,7 +38,7 @@ class ControllerExample extends StatelessWidget {
                 _controller.deselectAll();
               },
               child: const Text('Deselect  All'),
-              style: ElevatedButton.styleFrom(primary: Colors.red),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             )
           ],
         ),

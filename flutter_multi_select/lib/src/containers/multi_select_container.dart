@@ -308,112 +308,113 @@ class _SimpleMultiSelectContainerState<T>
     final _prefix = _getPrefix(item);
     final _suffix = _getSuffix(item);
     return AnimatedContainer(
-        //
-        clipBehavior: item.clipBehavior,
-        //
-        duration: widget.animations.decorationAimationDuration,
-        curve: widget.animations.decorationAnimationCurve,
-        //
-        decoration: getDecoration(item.decorations, widget.itemsDecoration,
-            isSelected, item.enabled, context),
-        //
-        child: Material(
-          type: MaterialType.transparency,
-          child: InkWell(
-            splashColor: item.splashColor ?? widget.splashColor,
-            highlightColor: item.highlightColor ?? widget.highlightColor,
-            onTap: item.enabled == false
-                ? null
-                : () {
-                    _onChange(item);
-                  },
-            child: Container(
-              alignment: item.alignment,
-              padding: (item.child == null &&
-                      item.contentPadding == null &&
-                      widget.itemsPadding == null)
-                  ? kCardPadding
-                  : item.contentPadding ?? widget.itemsPadding,
-              margin: item.margin ?? kCardMargin,
-              child: Row(
-                mainAxisSize: widget.alignments.mainAxisSize,
-                mainAxisAlignment: widget.alignments.mainAxisAlignment,
-                crossAxisAlignment: widget.alignments.crossAxisAlignment,
-                children: [
-                  _prefix == null
-                      ? const SizedBox()
-                      : Padding(
-                          padding: EdgeInsets.only(right: item.labelGap ?? 4),
-                          child: !item.enabled
-                              ? SizedBox(
-                                  key: ValueKey(item.value),
-                                  child: _prefix.disabledPrefix ??
-                                      _prefix.enabledPrefix,
-                                )
-                              : AnimatedSwitcher(
-                                  duration:
-                                      widget.animations.prefixAimationDuration,
-                                  switchInCurve:
-                                      widget.animations.prefixAnimationCurve,
-                                  switchOutCurve:
-                                      widget.animations.prefixAnimationCurve,
-                                  layoutBuilder: (Widget? currentChild,
-                                      List<Widget> previousChildren) {
-                                    return currentChild!;
-                                  },
-                                  child: isSelected
-                                      ? SizedBox(
-                                          key: ValueKey(item.value),
-                                          child: _prefix.selectedPrefix ??
-                                              _prefix.enabledPrefix,
-                                        )
-                                      : SizedBox(child: _prefix.enabledPrefix),
-                                ),
-                        ),
-                  AnimatedDefaultTextStyle(
-                    duration: widget.animations.labelAimationDuration,
-                    curve: widget.animations.labeAnimationlCurve,
-                    style: getTextStyle(item.textStyles, widget.textStyles,
-                        isSelected, item.enabled, context),
-                    child: item.child ??
-                        Text(
-                          item.label!,
-                        ),
-                  ),
-                  _suffix == null
-                      ? const SizedBox()
-                      : Padding(
-                          padding: EdgeInsets.only(left: item.labelGap ?? 4),
-                          child: !item.enabled
-                              ? SizedBox(
-                                  key: ValueKey(item.value),
-                                  child: _suffix.disabledSuffix ??
-                                      _suffix.enabledSuffix,
-                                )
-                              : AnimatedSwitcher(
-                                  duration:
-                                      widget.animations.suffixAimationDuration,
-                                  switchInCurve:
-                                      widget.animations.suffixAnimationCurve,
-                                  switchOutCurve:
-                                      widget.animations.suffixAnimationCurve,
-                                  layoutBuilder: (Widget? currentChild,
-                                      List<Widget> previousChildren) {
-                                    return currentChild!;
-                                  },
-                                  child: isSelected
-                                      ? SizedBox(
-                                          key: ValueKey(item.value),
-                                          child: _suffix.selectedSuffix ??
-                                              _suffix.enabledSuffix,
-                                        )
-                                      : SizedBox(child: _suffix.enabledSuffix),
-                                ),
-                        ),
-                ],
-              ),
+      //
+      clipBehavior: item.clipBehavior,
+      //
+      duration: widget.animations.decorationAimationDuration,
+      curve: widget.animations.decorationAnimationCurve,
+      //
+      decoration: getDecoration(item.decorations, widget.itemsDecoration,
+          isSelected, item.enabled, context),
+      //
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          splashColor: item.splashColor ?? widget.splashColor,
+          highlightColor: item.highlightColor ?? widget.highlightColor,
+          onTap: item.enabled == false
+              ? null
+              : () {
+                  _onChange(item);
+                },
+          child: Container(
+            alignment: item.alignment,
+            padding: (item.child == null &&
+                    item.contentPadding == null &&
+                    widget.itemsPadding == null)
+                ? kCardPadding
+                : item.contentPadding ?? widget.itemsPadding,
+            margin: item.margin ?? kCardMargin,
+            child: Row(
+              mainAxisSize: widget.alignments.mainAxisSize,
+              mainAxisAlignment: widget.alignments.mainAxisAlignment,
+              crossAxisAlignment: widget.alignments.crossAxisAlignment,
+              children: [
+                _prefix == null
+                    ? const SizedBox()
+                    : Padding(
+                        padding: EdgeInsets.only(right: item.labelGap ?? 4),
+                        child: !item.enabled
+                            ? SizedBox(
+                                key: ValueKey(item.value),
+                                child: _prefix.disabledPrefix ??
+                                    _prefix.enabledPrefix,
+                              )
+                            : AnimatedSwitcher(
+                                duration:
+                                    widget.animations.prefixAimationDuration,
+                                switchInCurve:
+                                    widget.animations.prefixAnimationCurve,
+                                switchOutCurve:
+                                    widget.animations.prefixAnimationCurve,
+                                layoutBuilder: (Widget? currentChild,
+                                    List<Widget> previousChildren) {
+                                  return currentChild!;
+                                },
+                                child: isSelected
+                                    ? SizedBox(
+                                        key: ValueKey(item.value),
+                                        child: _prefix.selectedPrefix ??
+                                            _prefix.enabledPrefix,
+                                      )
+                                    : SizedBox(child: _prefix.enabledPrefix),
+                              ),
+                      ),
+                AnimatedDefaultTextStyle(
+                  duration: widget.animations.labelAimationDuration,
+                  curve: widget.animations.labeAnimationlCurve,
+                  style: getTextStyle(item.textStyles, widget.textStyles,
+                      isSelected, item.enabled, context),
+                  child: item.child ??
+                      Text(
+                        item.label!,
+                      ),
+                ),
+                _suffix == null
+                    ? const SizedBox()
+                    : Padding(
+                        padding: EdgeInsets.only(left: item.labelGap ?? 4),
+                        child: !item.enabled
+                            ? SizedBox(
+                                key: ValueKey(item.value),
+                                child: _suffix.disabledSuffix ??
+                                    _suffix.enabledSuffix,
+                              )
+                            : AnimatedSwitcher(
+                                duration:
+                                    widget.animations.suffixAimationDuration,
+                                switchInCurve:
+                                    widget.animations.suffixAnimationCurve,
+                                switchOutCurve:
+                                    widget.animations.suffixAnimationCurve,
+                                layoutBuilder: (Widget? currentChild,
+                                    List<Widget> previousChildren) {
+                                  return currentChild!;
+                                },
+                                child: isSelected
+                                    ? SizedBox(
+                                        key: ValueKey(item.value),
+                                        child: _suffix.selectedSuffix ??
+                                            _suffix.enabledSuffix,
+                                      )
+                                    : SizedBox(child: _suffix.enabledSuffix),
+                              ),
+                      ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
