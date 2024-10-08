@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:text_field_test/pages/my_flutter_animate_test.dart';
+import 'package:flutter/services.dart';
+import 'package:text_field_test/pages/home_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MyApp());
 }
 
@@ -16,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const EverythingView(),
+      home: const HomePage(),
     );
   }
 }
